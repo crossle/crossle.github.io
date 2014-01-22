@@ -9,11 +9,14 @@ categories: Android JNI
 JNINativeMethod struct
 ----------------------
 
+{% highlight c %}
     typedef struct {
     const char* name;
     const char* signature;
     void* fnPtr;
     } JNINativeMethod;
+{% endhighlight %}
+
 
 name: java function name
 signature: use a string description function's parameter and return type
@@ -22,10 +25,12 @@ fnPtr: a function pointer point to native function, it's first add (void *)
 How to write the second paramter?
 ---------------------------------
 
+{% highlight c %}
     static JNINativeMethod methods[] = {
       { "_setDataSource", "(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;)V", (void *)android_media_MediaPlayer_setDataSourceAndHeaders },
       { "setDataSource", "(Ljava/io/FileDescriptor;)V", (void *)android_media_MediaPlayer_setDataSourceFD },
     };
+{% endhighlight %}
 
 * () express jni function paramter and back express return value(V: void Function())
 * Primitive types

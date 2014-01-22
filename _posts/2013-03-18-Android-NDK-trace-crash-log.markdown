@@ -8,10 +8,11 @@ categories: Android NDK
 ndk-stack
 -------
 
-ndk-stack is a simple tool that allows you to filter stack traces, trace the crash code quickly
+`ndk-stack` is a simple tool that allows you to filter stack traces, trace the crash code quickly
 
 adb logcat log:
 
+{% highlight bash %}
     I/DEBUG   (   31): *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
     I/DEBUG   (   31): Build fingerprint: 'generic/google_sdk/generic/:2.2/FRF91/43546:eng/test-keys'
     I/DEBUG   (   31): pid: 351, tid: 351  %gt;%gt;%gt; /data/local/ndk-tests/crasher <<<
@@ -28,10 +29,12 @@ adb logcat log:
     I/DEBUG   (   31):          #05  pc 00008458  /data/local/ndk-tests/crasher
     I/DEBUG   (   31):          #06  pc 0000d362  /system/lib/libc.so
     I/DEBUG   (   31):
+{% endhighlight %}
 
 ndk-trace crash log
 -------------------
 
+{% highlight bash %}
     Build fingerprint: 'generic/google_sdk/generic/:2.2/FRF91/43546:eng/test-keys'
     pid: 351, tid: 351  >>> /data/local/ndk-tests/crasher <<<
     signal 11 (SIGSEGV), fault addr 0d9f00d8
@@ -42,10 +45,11 @@ ndk-trace crash log
     Stack frame #04  pc 000083ea  /data/local/ndk-tests/crasher : Routine foo in /tmp/foo/crasher/jni/foo.c:14
     Stack frame #05  pc 00008458  /data/local/ndk-tests/crasher : Routine main in /tmp/foo/crasher/jni/main.c:19
     Stack frame #06  pc 0000d362  /system/lib/libc.so
+{% endhighlight %}
 
 Usage:
 
-adb logcat | $NDK/ndk-stack -sym $PROJECT_PATH/obj/local/armeabi
+`adb logcat | $NDK/ndk-stack -sym $PROJECT_PATH/obj/local/armeabi`
 
 Addr2line
 ---------
@@ -54,5 +58,5 @@ addr2line is a tool for translates addresses into file names and line numbers.
 
 Usage:
 
-addr2line -f -e /a/b/c/d.so 0007d89
+`addr2line -f -e /a/b/c/d.so 0007d89`
 

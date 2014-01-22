@@ -15,7 +15,7 @@ Tools
 Decompiler
 --------
 
-    Decompiler android resouce file use Android-apktools. Download apktool-install-linux-r05-ibot.tar.bz2 and apktool1.5.2.tar.bz2, unzip to a same folder, run apktool d -f xxx.apk xxx.
+    Decompiler android resouce file use Android-apktools. Download `apktool-install-linux-r05-ibot.tar.bz2` and `apktool1.5.2.tar.bz2`, unzip to a same folder, run `apktool d -f xxx.apk xxx`.
 
     Decompiler android java file use dex2jar, unzip a classes.dex from apk, run ./d2j-dex2jar.sh classes.dex, then you will got the file named classes-dex2jar.jar.
 

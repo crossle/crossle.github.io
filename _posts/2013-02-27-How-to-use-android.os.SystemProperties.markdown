@@ -17,7 +17,7 @@ How to use SystemProperties?
 
 By reflection
 
-```java
+{% highlight java %}
 ClassLoader cl = context.getClassLoader();
 Class<?> SystemProperties = cl.loadClass("android.os.SystemProperties");
 
@@ -29,7 +29,8 @@ Method get = SystemProperties.getMethod("get", paramTypes);
 //Parameters
 Object[] params = { key };
 String ret = (String) get.invoke(SystemProperties, params);
-```
+{% endhighlight %}
+
 
 Get the source code include your project
 
@@ -37,7 +38,7 @@ Get the source code include your project
 
 Use command adb shell getprop
 
-```java
+{% highlight java %}
 try {
   Process ifc = Runtime.getRuntime().exec("getprop ro.debuggable");
   BufferedReader bis = new BufferedReader(new InputStreamReader(ifc.getInputStream()));
@@ -45,7 +46,7 @@ try {
   ifc.destroy();
 } catch (java.io.IOException e) {
 }
-```
+{% endhighlight %}
 
 Conclusion
 ----------

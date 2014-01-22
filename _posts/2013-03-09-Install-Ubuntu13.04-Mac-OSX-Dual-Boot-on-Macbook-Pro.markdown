@@ -41,9 +41,12 @@ Install Wifi driver
 run lspci in your favorite terminal, look for the Network controller(e.g. BCM4331). Now install b43 wireless driver.2
 Install b43 driver
 
+
+{% highlight bash %}
       sudo add-apt-repository ppa:mpodroid/mactel
       sudo apt-get update
       sudo apt-get install b43-fwcutter firmware-b43-installer
+{% endhighlight %}
 
 Add line blacklist ndiswrapper to file /etc/modprobe.d/blacklist.conf
 Create or edit the file /etc/pm/config.d/modules, content SUSPEND_MODULES="b43 bcma"

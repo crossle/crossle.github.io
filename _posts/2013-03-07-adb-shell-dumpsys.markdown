@@ -10,6 +10,8 @@ adb shell dumpsys
 
 adb shell dumpsys is a command that dumps interesting system state to the log.
 
+
+{% highlight bash %}
     $ adb shell dumpsys | grep DUMP
     DUMP OF SERVICE SurfaceFlinger:
     DUMP OF SERVICE accessibility:
@@ -20,9 +22,13 @@ adb shell dumpsys is a command that dumps interesting system state to the log.
     DUMP OF SERVICE audio:
     DUMP OF SERVICE backup
     ...
+{% endhighlight %}
+
 
 You can dump the info to log, cpuinfo meminfo activity …
 e.g. dump meminfo for VPlayer apk
+
+{% highlight bash %}
 
     $ adb shell dumpsys meminfo 'me.abitno.vplayer.t'
     Applications Memory Usage (kB):
@@ -53,6 +59,7 @@ e.g. dump meminfo for VPlayer apk
            Local Binders:       31        Proxy Binders:       26
         Death Recipients:        1
          OpenSSL Sockets:        0
+{% endhighlight %}
 
 How to look for the help?
 ------------------------
@@ -60,6 +67,7 @@ How to look for the help?
 use argument -h to look for the help (e.g.adb shell dumpsys xxx -h)
 I wanna check the service for VPlayer apk
 
+{% highlight  bash %}
     $ adb shell dumpsys activity s | grep me.abitno.vplayer.t
       * ServiceRecord{42220f60 u0 me.abitno.vplayer.t/me.abitno.vplayer.VPlayerService}
         intent={cmp=me.abitno.vplayer.t/me.abitno.vplayer.VPlayerService}
@@ -88,6 +96,7 @@ I wanna check the service for VPlayer apk
       * ConnectionRecord{41c36700 u0 CR me.abitno.vplayer.t/me.abitno.vplayer.RemoteVPlayerService:@41e5d778}
         binding=AppBindRecord{41c4d038 me.abitno.vplayer.t/me.abitno.vplayer.RemoteVPlayerService:me.abitno.vplayer.t}
         activity=ActivityRecord{4218da70 u0 me.abitno.vplayer.t/me.abitno.media.explorer.FileExplorerContainer}
+{% endhighlight %}
 
 dumpsys source code locate `https://android.googlesource.com/platform/frameworks/native/+/master/cmds`
 dumpstate is a tool dumps the current system state to stdout, it's a full info.
