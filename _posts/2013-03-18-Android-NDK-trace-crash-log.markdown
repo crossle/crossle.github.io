@@ -58,5 +58,5 @@ addr2line is a tool for translates addresses into file names and line numbers.
 
 Usage:
 
-`addr2line -f -e /a/b/c/d.so 0007d89`
+`arm-linux-androideabi-addr2line -C -f -e /a/b/c/d.so 0007d89`
 
