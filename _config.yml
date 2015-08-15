@@ -1,49 +1,26 @@
-title:            Crossle Song
-description:      crossle
-disqus_shortname: crossle
-# Your site's domain goes here. When working locally use localhost server leave blank
-# PS. If you set this wrong stylesheets and scripts won't load and most links will break.
-# PPS. If you leave it blank for local testing home links won't work, they'll be fine for live domains though.
+# Dependencies
+markdown:         redcarpet
+highlighter:      pygments
+
+# Permalinks
+permalink:        pretty
+relative_permalinks: true
+
+# Setup
+title:            Crossle
+tagline:          'Crossle Song'
+description:      'Android and iOS programer, work on <a href="https://shou.tv" target="_blank">Shou.TV</a>'
 url:              http://songxiaoming.com
+baseurl:          /
 
-# Owner/author information
-owner:
-  name:           Crossle Song
-  avatar:         avatar.jpg
-  bio:            "Who am i."
-  email:          crosslesong@gmail.com
-  # Social networking links used in footer. Update and remove as you like.
-  twitter: songxiaoming
-  facebook:
-  github: crossle
-  stackexchange:
-  linkedin:
-  instagram:
-  flickr:
-  tumblr:
-  # For Google Authorship https://plus.google.com/authorship
-  google_plus: CrossleSong
+author:
+  name:           'Crossle Song'
+  url:            https://twitter.com/songxiaoming
 
-# Analytics and webmaster tools stuff goes here
-google_analytics:
-google_verify:
-# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
-bing_verify:
+paginate:         5
 
-# Links to include in top navigation
-# For external links add external: true
-#links:
-  #- title: Theme Setup
-    #url: /theme-setup
-  #- title: External Link
-    #url: http://mademistakes.com
-    #external: true
+# Custom vars
+version:          2.1.0
 
-# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezone:    America/New_York
-future:      true
-pygments:    true
-markdown:    kramdown
-
-# Amount of posts to show on home page
-paginate: 5
+github:
+  repo:           https://github.com/crossle
