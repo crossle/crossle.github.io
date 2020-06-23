@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.72.0" />
+
+  <title>Android NDK trace crash log &middot; Crossle Song</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="Android NDK trace crash log">
+<meta itemprop="description" content="ndk-stack ndk-stack is a simple tool that allows you to filter stack traces, trace the crash code quickly">
+<meta itemprop="datePublished" content="2013-03-18T18:47:34&#43;00:00" />
+<meta itemprop="dateModified" content="2013-03-18T18:47:34&#43;00:00" />
+<meta itemprop="wordCount" content="291">
+
+
+
+<meta itemprop="keywords" content="" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Android NDK trace crash log"/>
+<meta name="twitter:description" content="ndk-stack ndk-stack is a simple tool that allows you to filter stack traces, trace the crash code quickly"/>
+
+
+<meta property="og:title" content="Android NDK trace crash log" />
+<meta property="og:description" content="ndk-stack ndk-stack is a simple tool that allows you to filter stack traces, trace the crash code quickly" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://songxiaoming.com/posts/2013-03-18-android-ndk-trace-crash-log/" />
+<meta property="article:published_time" content="2013-03-18T18:47:34+00:00" />
+<meta property="article:modified_time" content="2013-03-18T18:47:34+00:00" />
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+        
+        <div class="author-image">
+          <img src="/images/avatar.jpeg" class="img-circle img-headshot center" alt="Profile Picture">
+        </div>
+        
+      
+
+      <h1>Crossle Song</h1>
+
+      
+      <p class="lead">Mixin</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="http://songxiaoming.com/">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/crosslesong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/crossle" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/songxiaoming" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1>Android NDK trace crash log</h1>
+
+  <div class="post-date">
+    <time datetime="2013-03-18T18:47:34Z">Mar 18, 2013</time> &middot; 2 min read
+  </div>
+
+  <h2 id="ndk-stack">ndk-stack</h2>
+<p><code>ndk-stack</code> is a simple tool that allows you to filter stack traces, trace the crash code quickly</p>
+<p>adb logcat log:</p>
+<p>{% highlight bash %}
+I/DEBUG ( 31): <strong>* *</strong> <strong>* *</strong> <strong>* *</strong> <strong>* *</strong> <strong>* *</strong> <strong>* *</strong> <strong>* *</strong> <strong>* *</strong>
+I/DEBUG ( 31): Build fingerprint: &lsquo;generic/google_sdk/generic/:2.2/FRF91/43546:eng/test-keys&rsquo;
+I/DEBUG ( 31): pid: 351, tid: 351 %gt;%gt;%gt; /data/local/ndk-tests/crasher &laquo;&lt;
+I/DEBUG ( 31): signal 11 (SIGSEGV), fault addr 0d9f00d8
+I/DEBUG ( 31): r0 0000af88 r1 0000a008 r2 baadf00d r3 0d9f00d8
+I/DEBUG ( 31): r4 00000004 r5 0000a008 r6 0000af88 r7 00013c44
+I/DEBUG ( 31): r8 00000000 r9 00000000 10 00000000 fp 00000000
+I/DEBUG ( 31): ip 0000959c sp be956cc8 lr 00008403 pc 0000841e cpsr 60000030
+I/DEBUG ( 31): #00 pc 0000841e /data/local/ndk-tests/crasher
+I/DEBUG ( 31): #01 pc 000083fe /data/local/ndk-tests/crasher
+I/DEBUG ( 31): #02 pc 000083f6 /data/local/ndk-tests/crasher
+I/DEBUG ( 31): #03 pc 000191ac /system/lib/libc.so
+I/DEBUG ( 31): #04 pc 000083ea /data/local/ndk-tests/crasher
+I/DEBUG ( 31): #05 pc 00008458 /data/local/ndk-tests/crasher
+I/DEBUG ( 31): #06 pc 0000d362 /system/lib/libc.so
+I/DEBUG ( 31):
+{% endhighlight %}</p>
+<h2 id="ndk-trace-crash-log">ndk-trace crash log</h2>
+<p>{% highlight bash %}
+Build fingerprint: &lsquo;generic/google_sdk/generic/:2.2/FRF91/43546:eng/test-keys&rsquo;
+pid: 351, tid: 351 &raquo;&gt; /data/local/ndk-tests/crasher &laquo;&lt;
+signal 11 (SIGSEGV), fault addr 0d9f00d8
+Stack frame #00 pc 0000841e /data/local/ndk-tests/crasher : Routine zoo in /tmp/foo/crasher/jni/zoo.c:13
+Stack frame #01 pc 000083fe /data/local/ndk-tests/crasher : Routine bar in /tmp/foo/crasher/jni/bar.c:5
+Stack frame #02 pc 000083f6 /data/local/ndk-tests/crasher : Routine my_comparison in /tmp/foo/crasher/jni/foo.c:9
+Stack frame #03 pc 000191ac /system/lib/libc.so
+Stack frame #04 pc 000083ea /data/local/ndk-tests/crasher : Routine foo in /tmp/foo/crasher/jni/foo.c:14
+Stack frame #05 pc 00008458 /data/local/ndk-tests/crasher : Routine main in /tmp/foo/crasher/jni/main.c:19
+Stack frame #06 pc 0000d362 /system/lib/libc.so
+{% endhighlight %}</p>
+<p>Usage:</p>
+<p><code>adb logcat | $NDK/ndk-stack -sym $PROJECT_PATH/obj/local/armeabi</code></p>
+<h2 id="addr2line">Addr2line</h2>
+<p>addr2line is a tool for translates addresses into file names and line numbers.</p>
+<p>Usage:</p>
+<p><code>arm-linux-androideabi-addr2line -C -f -e /a/b/c/d.so 0007d89</code></p>
+
+</div>
+
+
+  </main>
+
+  <footer>
+  <div>
+    &copy; Crossle Song 2020
+
+    &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+    
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+  
+
+  
+</body>
+</html>

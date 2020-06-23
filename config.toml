@@ -9,6 +9,8 @@ enableInlineShortcodes = true
 summarylength = 10
 enableEmoji = true
 
+publishDir = "docs"
+
 [params]
 author = "Crossle Song"
 description = "Mixin"
