@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.72.0" />
+
+  <title>Android JNI &middot; Crossle Song</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="Android JNI">
+<meta itemprop="description" content="JNINativeMethod struct typedef struct { const char* name; const char* signature; void* fnPtr; } JNINativeMethod; name: java function name signature: use a string description function&rsquo;s parameter and return type fnPtr: a function pointer point to native function, it&rsquo;s first add (void *)">
+<meta itemprop="datePublished" content="2013-01-28T15:47:34&#43;00:00" />
+<meta itemprop="dateModified" content="2013-01-28T15:47:34&#43;00:00" />
+<meta itemprop="wordCount" content="114">
+
+
+
+<meta itemprop="keywords" content="" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Android JNI"/>
+<meta name="twitter:description" content="JNINativeMethod struct typedef struct { const char* name; const char* signature; void* fnPtr; } JNINativeMethod; name: java function name signature: use a string description function&rsquo;s parameter and return type fnPtr: a function pointer point to native function, it&rsquo;s first add (void *)"/>
+
+
+<meta property="og:title" content="Android JNI" />
+<meta property="og:description" content="JNINativeMethod struct typedef struct { const char* name; const char* signature; void* fnPtr; } JNINativeMethod; name: java function name signature: use a string description function&rsquo;s parameter and return type fnPtr: a function pointer point to native function, it&rsquo;s first add (void *)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://songxiaoming.com/posts/2013-01-28-android-jni/" />
+<meta property="article:published_time" content="2013-01-28T15:47:34+00:00" />
+<meta property="article:modified_time" content="2013-01-28T15:47:34+00:00" />
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+        
+        <div class="author-image">
+          <img src="/images/avatar.jpeg" class="img-circle img-headshot center" alt="Profile Picture">
+        </div>
+        
+      
+
+      <h1>Crossle Song</h1>
+
+      
+      <p class="lead">Mixin</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="http://songxiaoming.com/">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/crosslesong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/crossle" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/songxiaoming" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1>Android JNI</h1>
+
+  <div class="post-date">
+    <time datetime="2013-01-28T15:47:34Z">Jan 28, 2013</time> &middot; 1 min read
+  </div>
+
+  <h2 id="jninativemethod-struct">JNINativeMethod struct</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+  <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> name;
+  <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> signature;
+  <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> fnPtr;
+} JNINativeMethod;</code></pre></div>
+<p>name: java function name
+signature: use a string description function&rsquo;s parameter and return type
+fnPtr: a function pointer point to native function, it&rsquo;s first add (void *)</p>
+<h2 id="how-to-write-the-second-paramter">How to write the second paramter?</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">static</span> JNINativeMethod methods<span style="color:#f92672">[]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+    <span style="color:#f92672">{</span> <span style="color:#e6db74">&#34;\_setDataSource&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;)V&#34;</span><span style="color:#f92672">,</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">void</span> _<span style="color:#f92672">)</span>android_media_MediaPlayer_setDataSourceAndHeaders <span style="color:#f92672">},</span>
+    <span style="color:#f92672">{</span> <span style="color:#e6db74">&#34;setDataSource&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;(Ljava/io/FileDescriptor;)V&#34;</span><span style="color:#f92672">,</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">void</span> _<span style="color:#f92672">)</span>android_media_MediaPlayer_setDataSourceFD <span style="color:#f92672">},</span>
+<span style="color:#f92672">};</span></code></pre></div>
+<ul>
+<li>() express jni function paramter and back express return value(V: void Function())</li>
+<li>Primitive types</li>
+</ul>
+<p>![Screenshot_from_2013-01-28_14_27_12.png]({{ site.url }}/images/Screenshot_from_2013-01-28_14_27_12.png)</p>
+<ul>
+<li>Reference types</li>
+</ul>
+<p>![Screenshot_from_2013-01-28_14_46_52.png]({{ site.url }}/images/Screenshot_from_2013-01-28_14_46_52.png)</p>
+<p>object type: To the beginning of the &ldquo;L&rdquo;, &ldquo;;&rdquo; at the end, in the middle is &ldquo;/&rdquo; separated
+array type: To the beginning of the &ldquo;[&rdquo;</p>
+
+</div>
+
+
+  </main>
+
+  <footer>
+  <div>
+    &copy; Crossle Song 2020
+
+    &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+    
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+  
+
+  
+</body>
+</html>
